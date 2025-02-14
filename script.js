@@ -1,19 +1,5 @@
 // script.js
-// Function to display the raccoon.gif initially
-function displayRaccoon() {
-    // Get the container where the image will be displayed
-    var imageContainer = document.getElementById('image-container');
-    // Create a new Image element for the raccoon
-    var raccoonImage = new Image();
-    // Set the source (file path) for the raccoon image
-    raccoonImage.src = 'raccoon .gif'; // Assuming the raccoon image is named "raccoon_.gif"
-    // Set alternative text for the image (for accessibility)
-    raccoonImage.alt = 'Raccoon';
-    // When the raccoon image is fully loaded, add it to the image container
-    raccoonImage.onload = function() {
-        imageContainer.appendChild(raccoonImage);
-    };
-}
+
 // Function to handle button click events
 function selectOption(option) {
     // Check which option was clicked
