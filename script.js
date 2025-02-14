@@ -6,7 +6,7 @@ function displayRaccoon() {
     // Create a new Image element for the raccoon
     var raccoonImage = new Image();
     // Set the source (file path) for the raccoon image
-    raccoonImage.src = 'raccoon_.gif'; // Assuming the raccoon image is named "raccoon_.gif"
+    raccoonImage.src = 'raccoon .gif'; // Assuming the raccoon image is named "raccoon_.gif"
     // Set alternative text for the image (for accessibility)
     raccoonImage.alt = 'Raccoon';
     // When the raccoon image is fully loaded, add it to the image container
