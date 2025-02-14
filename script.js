@@ -1,16 +1,19 @@
 // script.js
-// Function to display the raccoon gif initially
+// Function to display the raccoon.gif initially
 function displayRaccoon() {
-    document.getElementById('image-container').innerHTML = ''; // Clear existing content
+    // Get the container where the image will be displayed
     var imageContainer = document.getElementById('image-container');
+    // Create a new Image element for the raccoon
     var raccoonImage = new Image();
-    raccoonImage.src = 'raccoon_.gif'; // Make sure this matches your filename exactly
-    raccoonImage.alt = 'Sad raccoon';
+    // Set the source (file path) for the raccoon image
+    raccoonImage.src = 'raccoon_.gif'; // Assuming the raccoon image is named "raccoon_.gif"
+    // Set alternative text for the image (for accessibility)
+    raccoonImage.alt = 'Raccoon';
+    // When the raccoon image is fully loaded, add it to the image container
     raccoonImage.onload = function() {
         imageContainer.appendChild(raccoonImage);
     };
 }
-
 // Function to handle button click events
 function selectOption(option) {
     // Check which option was clicked
@@ -26,38 +29,10 @@ function selectOption(option) {
         // Increase font size of "Yes" button
         var yesButton = document.getElementById('yes-button');
         var currentFontSize = window.getComputedStyle(yesButton).getPropertyValue('font-size');
-        var newSize = parseFloat(currentFontSize) * 2; // Increase font size by * 2px
+        var newSize = parseFloat(currentFontSize) * 2; // Increase font size by  * 2px
         yesButton.style.fontSize = newSize + 'px';
     } else {
         // If neither "Yes" nor "No" was clicked, show an alert message
-        alert('Invalid option!');
-    }
-}
-
-// Display the raccoon gif initially when the page loads
-displayRaccoon();
-
-let noClickCount = 0; // Track how many times "No" is clicked
-
-function selectOption(option) {
-    if (option === 'yes') {
-        flashRainbowColors(function() {
-            document.getElementById('question').style.display = 'none'; 
-            displayCatHeart(); 
-        });
-    } else if (option === 'no') {
-        noClickCount++; // Increment click count
-
-        if (noClickCount === 1) {
-            document.getElementById('no-button').innerText = 'You sure?'; 
-            var yesButton = document.getElementById('yes-button');
-            var currentFontSize = window.getComputedStyle(yesButton).getPropertyValue('font-size');
-            var newSize = parseFloat(currentFontSize) * 2; // Increase font size
-            yesButton.style.fontSize = newSize + 'px';
-        } else if (noClickCount === 2) {
-            displayRaccoon(); // Show raccoon gif after second "No" click
-        }
-    } else {
         alert('Invalid option!');
     }
 }
@@ -117,16 +92,3 @@ function displayCatHeart() {
 
 // Display the cat.gif initially
 displayCat();
-
-// Function to display the raccoon gif
-function displayRaccoon() {
-    document.getElementById('image-container').innerHTML = ''; // Clear existing content
-    var imageContainer = document.getElementById('image-container');
-    var raccoonImage = new Image();
-    raccoonImage.src = 'raccoon_.gif'; // Ensure the filename is exactly correct
-    raccoonImage.alt = 'Sad raccoon';
-    raccoonImage.onload = function() {
-        imageContainer.appendChild(raccoonImage);
-        document.getElementById('options').style.display = 'none'; // Hide buttons
-    };
-}
