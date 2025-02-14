@@ -1,24 +1,26 @@
 // script.js
 
-// Function to handle button click events
+let noClickCount = 0; // Track how many times "No" is clicked
+
 function selectOption(option) {
-    // Check which option was clicked
     if (option === 'yes') {
-        // Flash rainbow colors
         flashRainbowColors(function() {
-            document.getElementById('question').style.display = 'none'; // Hide the question
-            displayCatHeart(); // Display the cat-heart.gif
+            document.getElementById('question').style.display = 'none'; 
+            displayCatHeart(); 
         });
     } else if (option === 'no') {
-        // Change text on the "No" button to "You sure?"
-        document.getElementById('no-button').innerText = 'You sure?'; 
-        // Increase font size of "Yes" button
-        var yesButton = document.getElementById('yes-button');
-        var currentFontSize = window.getComputedStyle(yesButton).getPropertyValue('font-size');
-        var newSize = parseFloat(currentFontSize) * 2; // Increase font size by  * 2px
-        yesButton.style.fontSize = newSize + 'px';
+        noClickCount++; // Increment click count
+
+        if (noClickCount === 1) {
+            document.getElementById('no-button').innerText = 'You sure?'; 
+            var yesButton = document.getElementById('yes-button');
+            var currentFontSize = window.getComputedStyle(yesButton).getPropertyValue('font-size');
+            var newSize = parseFloat(currentFontSize) * 2; // Increase font size
+            yesButton.style.fontSize = newSize + 'px';
+        } else if (noClickCount === 2) {
+            displayRaccoon(); // Show raccoon gif after second "No" click
+        }
     } else {
-        // If neither "Yes" nor "No" was clicked, show an alert message
         alert('Invalid option!');
     }
 }
@@ -78,3 +80,16 @@ function displayCatHeart() {
 
 // Display the cat.gif initially
 displayCat();
+
+// Function to display the raccoon gif
+function displayRaccoon() {
+    document.getElementById('image-container').innerHTML = ''; // Clear existing content
+    var imageContainer = document.getElementById('image-container');
+    var raccoonImage = new Image();
+    raccoonImage.src = 'raccoon_.gif'; // Ensure the filename is exactly correct
+    raccoonImage.alt = 'Sad raccoon';
+    raccoonImage.onload = function() {
+        imageContainer.appendChild(raccoonImage);
+        document.getElementById('options').style.display = 'none'; // Hide buttons
+    };
+}
